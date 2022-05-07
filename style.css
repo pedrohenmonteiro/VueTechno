@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(90deg, rgb(245, 221, 221) 30%, #fff 30%);
+  font-family: "Noto Serif";
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.produtos {
+  width: min(90vw, 900px);
+  margin: 100px auto 0 auto;
+}
+
+.produto {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  background: #fff;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+}
+
+.produto-img {
+  max-width: 300px;
+}
+
+.produto-titulo {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.produto-preco {
+  color: rgba(0, 0, 0, 0.5);
+}
