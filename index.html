@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
@@ -15,16 +15,36 @@
 
 <body>
   <div id="app">
+
+    <header class="header">
+      <img class="logo" src="./assets/techno.svg" alt="Techno">
+    </header>
+
+    <section class="modal-container" v-if="produto" @click="handleClick">
+      <div class="modal">
+        <div class="modal-img">
+          <img :src="produto.img" alt="">
+        </div>
+        <div class="modal-info">
+          <span>{{produto.preco | numberToPrice}}</span>
+          <h2>{{produto.nome}}</h2>
+          <p>{{produto.descricao}}</p>
+          <button class="modal-btn">Adicionar item</button>
+        </div>
+      </div>
+    </section>
     <section class="produtos">
-      <div class="produto" :key="produto.id" v-for="produto in produtos">
-        <img :src="produto.img" :alt="produto.nome" class="produto-img" />
+      <div class="produto" :key="item.id" v-for="item in produtos" @click="produtoAPI(item.id)">
+        <img :src="item.img" :alt="item.nome" class="produto-img" />
         <div class="produto-info">
-          <span class="produto-preco">{{produto.preco}}</span>
-          <h2 class="produto-titulo">{{produto.nome}}</h2>
+          <span class="produto-preco">{{item.preco | numberToPrice}}</span>
+          <h2 class="produto-titulo">{{item.nome}}</h2>
         </div>
       </div>
     </section>
   </div>
+
+
 
   <script src="./app.js"></script>
 </body>
