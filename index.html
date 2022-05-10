@@ -18,6 +18,13 @@
 
     <header class="header">
       <img class="logo" src="./assets/techno.svg" alt="Techno">
+      <div class="carrinho-menu">{{carrinhoTotal | numberToPrice}} | {{carrinho.length}} </div>
+      <ul>
+        <li v-for="(item, index) in carrinho">
+          <p>{{item.nome}}</p>
+          <button @click="removerItem(index)">X</button>
+        </li>
+      </ul>
     </header>
 
     <section class="modal-container" v-if="produto" @click="handleClick">
@@ -29,7 +36,11 @@
           <span>{{produto.preco | numberToPrice}}</span>
           <h2>{{produto.nome}}</h2>
           <p>{{produto.descricao}}</p>
-          <button class="modal-btn">Adicionar item</button>
+
+
+          <button v-if="produto.estoque > 0" class="modal-btn" @click="adicionarItem">Adicionar item</button>
+          <button v-else class="modal-btn esgotado" disabled>Produto esgotado</button>
+
         </div>
       </div>
     </section>
@@ -42,9 +53,11 @@
         </div>
       </div>
     </section>
+
+    <div class="alerta" :class="{ativo: alertaAtivo}">
+      <p class="alerta-mensagem">{{alertaMensagem}}</p>
+    </div>
   </div>
-
-
 
   <script src="./app.js"></script>
 </body>

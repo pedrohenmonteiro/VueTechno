@@ -6,7 +6,7 @@
 }
 
 body {
-  background: linear-gradient(90deg, rgb(245, 221, 221) 30%, #fff 30%);
+  background: linear-gradient(90deg, rgb(233, 215, 241) 30%, #fff 30%);
 }
 
 img {
@@ -23,6 +23,32 @@ ul {
   margin: 0 auto;
 }
 
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 120px;
+}
+
+.carrinho-menu::after {
+  content: "";
+  display: inline-block;
+  background: url("./assets/carrinho.svg") no-repeat center center;
+  width: 25px;
+  height: 20px;
+}
+
+.carrinho-menu {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Lista produtos */
 .produtos {
   margin: 100px auto 0 auto;
 }
@@ -116,6 +142,46 @@ ul {
   transition: 0.1s;
 }
 
+.modal-btn.esgotado {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .modal-btn:active {
   background: #808080;
+}
+
+/* Alerta */
+
+.alerta {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+
+.alerta.ativo {
+  display: block;
+  animation: fadeInDown 0.3s forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: initial;
+    opacity: initial;
+  }
+}
+
+.alerta-mensagem {
+  background: white;
+  display: inline-block;
+  padding: 20px 40px;
+  border: 2px solid black;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.2);
 }
